@@ -1,8 +1,6 @@
-const atRoot = require('postcss-atroot');
 const browserSync = require('browser-sync').create();
 const clearFix = require('postcss-clearfix');
 const colorShort = require('postcss-color-short');
-const concat = require('gulp-concat');
 const cssMqpacker = require('css-mqpacker');
 const cssNano = require('gulp-cssnano');
 const cssNext = require('postcss-cssnext');
@@ -10,11 +8,13 @@ const cssSorter = require('css-declaration-sorter');
 const focus = require('postcss-focus');
 const gulp = require('gulp');
 const inlineImg = require('postcss-inline-image');
+const inlineSvg = require('postcss-inline-svg');
+const instagram = require('postcss-instagram');
+const nested = require('postcss-nested');
 const postcss = require('gulp-postcss');
 const pug = require('gulp-pug');
 const px2Rem = require('postcss-pxtorem');
 const size = require('postcss-size');
-const uglify = require('gulp-uglify');
 const uncss = require('gulp-uncss');
 const watch = require('gulp-watch');
 
@@ -28,15 +28,12 @@ gulp.task('default', ['server'], () => {
   gulp.watch('src/css/**', (event) => {
     gulp.run('css');
   });
-  gulp.watch('src/js/**', (event) => {
-    gulp.run('js');
-  });
 });
 
 // Pug
 
 gulp.task('pug', () => {
-  gulp.src('src/pug/**/*.pug')
+  gulp.src('src/pug/index.pug')
     .pipe(pug({
       pretty: false,
     }))
@@ -48,11 +45,13 @@ gulp.task('pug', () => {
 
 gulp.task('postcss', () => {
   const processors = [
-    atRoot,
+    nested,
     colorShort,
     focus,
     size,
     inlineImg,
+    inlineSvg,
+    instagram,
     clearFix,
     px2Rem,
     cssNext({
@@ -61,7 +60,7 @@ gulp.task('postcss', () => {
     cssMqpacker,
     cssSorter
   ];
-  return gulp.src('src/postcss/*.css')
+  return gulp.src('src/postcss/style.css')
     .pipe(postcss(processors))
     .pipe(uncss({
       html: ['dist/index.html']
@@ -69,16 +68,6 @@ gulp.task('postcss', () => {
     .pipe(cssNano())
     .pipe(gulp.dest('./dist/css/'))
     .pipe(browserSync.stream());
-});
-
-// JavaScript
-
-gulp.task('js', () => {
-  gulp.src('src/js/*.js')
-  .pipe(concat('main.js'))
-  .pipe(uglify())
-  .pipe(gulp.dest('./dist/js/'))
-  .pipe(browserSync.stream());
 });
 
 // Server
