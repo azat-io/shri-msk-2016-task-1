@@ -7,6 +7,7 @@ const cssNext = require('postcss-cssnext');
 const cssSorter = require('css-declaration-sorter');
 const focus = require('postcss-focus');
 const gulp = require('gulp');
+const imageOp = require('gulp-image-optimization');
 const inlineImg = require('postcss-inline-image');
 const inlineSvg = require('postcss-inline-svg');
 const instagram = require('postcss-instagram');
@@ -55,7 +56,7 @@ gulp.task('postcss', () => {
     clearFix,
     px2Rem,
     cssNext({
-      autoprefixer: 'ie >= 7, last 10 versions, > 1%'
+      autoprefixer: ['ie >= 7', 'last 10 versions', '> 1%']
     }),
     cssMqpacker,
     cssSorter
@@ -68,6 +69,18 @@ gulp.task('postcss', () => {
     .pipe(cssNano())
     .pipe(gulp.dest('./dist/css/'))
     .pipe(browserSync.stream());
+});
+
+// Images
+
+gulp.task('images', (cb) => {
+  gulp.src(['src/images/**/*'])
+  .pipe(imageOp({
+    optimizationLevel: 5,
+    progressive: true,
+    interlaced: true
+  }))
+  .pipe(gulp.dest('dist/images')).on('end', cb).on('error', cb);
 });
 
 // Server
