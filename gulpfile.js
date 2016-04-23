@@ -26,9 +26,10 @@ gulp.task('default', ['server'], () => {
   gulp.watch('src/postcss/**', (event) => {
     gulp.run('postcss');
   });
-  gulp.watch('src/css/**', (event) => {
-    gulp.run('css');
-  });
+});
+
+gulp.task('build', () => {
+  gulp.run('pug', 'postcss', 'images', 'move');
 });
 
 // Pug
@@ -81,6 +82,17 @@ gulp.task('images', (cb) => {
     interlaced: true
   }))
   .pipe(gulp.dest('dist/images')).on('end', cb).on('error', cb);
+});
+
+// Moving
+
+gulp.task('move', () => {
+  const filesToMove = [
+    './src/fonts/**/*.*',
+    './src/favicon.ico'
+  ];
+  gulp.src(filesToMove, { base: './src/' })
+  .pipe(gulp.dest('./dist/'));
 });
 
 // Server
