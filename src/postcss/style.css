@@ -293,7 +293,7 @@ textarea {
 header {
   display: block;
   margin: 0 auto;
-  padding: 10px 170px;
+  padding: 10px 15px;
   clear: fix-legacy;
   background: var(--mainColor);
   background-size: 100%;
@@ -302,8 +302,10 @@ header {
 
 .logo {
   size: 297px 90px;
+  width: 297px;
   margin: 20px auto;
   background-inline-image: url(src/inline-images/logo.png);
+  background-position: center;
 }
 
 /* 3.0 Main
@@ -360,6 +362,31 @@ label {
   background: var(--mainColor);
   transition-property: color;
   transition-duration: 0.3s;
+  &:hover {
+    background: color(var(--mainColor) lightness(30%));
+    color: #f;
+  }
+  &:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #f;
+    border-radius: 100%;
+    transform: scale(0);
+    transition-property: transform;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out;
+  }
+  &:active {
+    color: #35;
+    &:before {
+      transform: scale(2);
+    }
+  }
   @media (width <= 747px) {
     font-size: 0;
     padding: 14px;
@@ -367,37 +394,6 @@ label {
       font-size: 16px;
     }
   }
-}
-
-label:hover {
-  background: color(var(--mainColor) lightness(30%));
-  color: #f;
-}
-
-label:before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: #f;
-  border-radius: 100%;
-  -webkit-transform: scale(0);
-  transform: scale(0);
-  transition-property: transform;
-  transition-duration: 0.5s;
-  transition-timing-function: ease-out;
-}
-
-label:active {
-  color: #35;
-}
-
-label:active:before {
-  -webkit-transform: scale(2);
-  transform: scale(2);
 }
 
 .tab {
@@ -460,7 +456,7 @@ label:active:before {
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 .channels {
-  display:flex;
+  display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
@@ -471,29 +467,63 @@ label:active:before {
   }
 }
 
-table tr td {
-  position: relative;
-}
-
-table tr td span {
-  visibility: hidden;
-  position: absolute;
-  display: none;
-  opacity: 0;
-}
-
-table tr td:hover span {
-  position: absolute;
-  left: 1em;
-  visibility: visible;
-  padding: 10px;
-  background: #f;
-  display: block;
-  opacity: 1;
-  bottom: 2.5em;
-  z-index: 99;
-  margin-left: 0;
-  width: 250px;
+table {
+  width: 227px;
+  margin: 20px 0;
+  thead {
+    background: var(--mainColor);
+    color: #f;
+    tr td {
+      padding: 10px 0;
+    }
+  }
+  tbody tr {
+    td {
+      position: relative;
+      i {
+        display: block;
+        font-style: normal;
+        font-size: 12px;
+      }
+      p {
+        margin: 5px 0;
+      }
+      span {
+        visibility: hidden;
+        position: absolute;
+        display: none;
+        opacity: 0;
+      }
+      &:hover span {
+        position: absolute;
+        left: 1em;
+        visibility: visible;
+        padding: 10px;
+        background: #f;
+        display: block;
+        opacity: 1;
+        bottom: 2.5em;
+        z-index: 99;
+        margin-left: 0;
+        width: 250px;
+      }
+    }
+    &:nth-child(odd) {
+      background: #f;
+  }
+    &:nth-child(even) {
+      background: #e;
+    }
+  }
+  @media (width <= 1210px) {
+    width: 33%;
+  }
+  @media (width <= 780px) {
+    width: 50%;
+  }
+  @media (width <= 540px) {
+    width: 100%;
+  }
 }
 
 .fox, .abc, .usa, .hbo, .tnt {
@@ -521,80 +551,36 @@ table tr td:hover span {
   background-inline-image: url(src/inline-images/tnt.png);
 }
 
-table {
-  width: 227px;
-  margin: 20px 0;
-  thead {
-    background: var(--mainColor);
-    color: #f;
-    tr td {
-      padding: 10px 0;
-    }
-  }
-  tbody tr {
-    td {
-      i {
-        display: block;
-        font-style: normal;
-        font-size: 12px;
-      }
-      p {
-        margin: 5px 0;
-      }
-    }
-    &:nth-child(odd) {
-      background: #f;
-  }
-    &:nth-child(even) {
-      background: #e;
-    }
-  }
-  @media (width <= 1210px) {
-    width: 220px;
-  }
-}
-
 /* 4.0 Footer
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 footer {
-  color: #35;
-  margin: 0 auto;
-  padding: 0px 5px;
-  clear: fix-legacy;
-  @media (width >= 990px) {
-    width: 970px;
+  background: var(--mainColor);
+  margin-top: 30px;
+  p a {
+    display: block;
+    color: #f;
+    transition: color 0.3s ease;
+    &:hover {
+      color: gold;
+    }
+    &:active {
+      color: #f;
+    }
   }
-  @media (width >= 1200px) {
-    width: 1170px;
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px 5px;
+    margin: 0 auto;
+    @media (width >= 990px) {
+      width: 970px;
+    }
+    @media (width >= 1200px) {
+      width: 1170px;
+    }
   }
-}
-
-footer p a {
-  color: #35;
-  transition: color 0.3s ease;
-}
-
-footer p a:hover {
-  color: var(--mainColor);
-}
-
-footer p a:active {
-  color: inherit;
-}
-
-.thanks {
-  font-size: 18px;
-  text-align: center;
-  font-weight: bold;
-}
-
-.github-link {
-  float: left;
-}
-
-.special {
-  float: right;
 }
 
 .yandex {
