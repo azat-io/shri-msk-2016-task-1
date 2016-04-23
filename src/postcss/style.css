@@ -3,6 +3,11 @@
 0.0 General
 1.0 Normalize
 2.0 Header
+3.0 Main
+3.1 Tabs
+3.2 Filters
+3.3 Channels
+4.0 Footer
 */
 
 
@@ -306,7 +311,7 @@ header {
 
 main {
   display: block;
-  margin: 40px auto;
+  margin: 40px auto 20px auto;
   background-size: 100%;
   background-repeat: repeat-y;
   @media (width >= 990px) {
@@ -527,7 +532,6 @@ table {
   tbody tr {
     td {
       i {
-        /*float: left;*/
         display: block;
         font-style: normal;
         font-size: 12px;
@@ -546,4 +550,51 @@ table {
   @media (width <= 1210px) {
     width: 220px;
   }
+}
+
+/* 4.0 Footer
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+footer {
+  color: #35;
+  margin: 0 auto;
+  padding: 0px 5px;
+  clear: fix-legacy;
+  @media (width >= 990px) {
+    width: 970px;
+  }
+  @media (width >= 1200px) {
+    width: 1170px;
+  }
+}
+
+footer p a {
+  color: #35;
+  transition: color 0.3s ease;
+}
+
+footer p a:hover {
+  color: var(--mainColor);
+}
+
+footer p a:active {
+  color: inherit;
+}
+
+.thanks {
+  font-size: 18px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.github-link {
+  float: left;
+}
+
+.special {
+  float: right;
+}
+
+.yandex {
+  color: red;
 }
