@@ -426,3 +426,123 @@ label:active:before {
 #toggle-sunday:checked ~ #sunday {
   display:block;
 }
+
+/* 3.2 Filters
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.filter-tv-series,
+.filter-cinema,
+.filter-sport {
+  display: inline-block;
+  margin-right: 5px;
+  border: 0;
+  background: var(--mainColor);
+  color: #f;
+  border-radius: 4px;
+  padding: 5px 10px;
+  outline: 0;
+}
+
+.filter-tv-series:focus ~ .channels table tbody tr .tv-series,
+.filter-cinema:focus ~ .channels table tbody tr .cinema,
+.filter-sport:focus ~ .channels table tbody tr .sport {
+  background: color(var(--mainColor) lightness(30%));
+  color: #f;
+}
+
+/* 3.3 Channels
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.channels {
+  display:flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-content: space-between;
+  align-items: flex-start;
+  @media (width <= 1210px) {
+    flex-wrap: wrap;
+  }
+}
+
+table tr td {
+  position: relative;
+}
+table tr td span {
+  margin-left: -999em;
+  position: absolute;
+}
+
+table tr td:hover span {
+  position: absolute;
+  left: 1em;
+  bottom: 16em;
+  z-index: 99;
+  margin-left: 0;
+  width: 250px;
+}
+table tr td:hover img {
+  border: 0;
+  margin: -10px 0 0 -55px;
+  float: left;
+  position: absolute;
+}
+
+.fox, .abc, .usa, .hbo, .tnt {
+  size: 46px 35px;
+  margin: 0 auto;
+}
+
+.fox {
+  background-inline-image: url(src/inline-images/fox.png);
+}
+
+.abc {
+  background-inline-image: url(src/inline-images/abc.png);
+}
+
+.usa {
+  background-inline-image: url(src/inline-images/usa.png);
+}
+
+.hbo {
+  background-inline-image: url(src/inline-images/hbo.png);
+}
+
+.tnt {
+  background-inline-image: url(src/inline-images/tnt.png);
+}
+
+table {
+  width: 227px;
+  margin: 20px 0;
+  thead {
+    background: var(--mainColor);
+    color: #f;
+    tr td {
+      padding: 10px 0;
+    }
+  }
+  tbody tr {
+    td {
+      i {
+        /*float: left;*/
+        display: block;
+        font-style: normal;
+        font-size: 12px;
+      }
+      p {
+        margin: 5px 0;
+      }
+    }
+    &:nth-child(odd) {
+      background: #f;
+  }
+    &:nth-child(even) {
+      background: #e;
+    }
+  }
+  @media (width <= 1210px) {
+    width: 220px;
+  }
+}

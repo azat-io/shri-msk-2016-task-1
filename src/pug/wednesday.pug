@@ -1,0 +1,36 @@
+.channels
+  include ./data/wednesday-fox.pug
+  table
+    thead: tr: td
+      .fox
+    tbody
+      for movie in wednesdayFox
+        +movie-card(movie)
+  include ./data/wednesday-usa.pug
+  table
+    thead: tr: td
+      .usa
+    tbody
+      for movie in wednesdayUSA
+        +movie-card(movie)
+  include ./data/wednesday-abc.pug
+  table
+    thead: tr: td
+      .abc
+    tbody
+      for movie in wednesdayABC
+        +movie-card(movie)
+  include ./data/wednesday-hbo.pug
+  table
+    thead: tr: td
+      .hbo
+    tbody
+      for movie in wednesdayHBO
+        +movie-card(movie)
+  include ./data/wednesday-tnt.pug
+  table
+    thead: tr: td
+      .tnt
+    tbody
+      for movie in wednesdayTNT
+        +movie-card(movie)

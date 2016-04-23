@@ -1,0 +1,36 @@
+.channels
+  include ./data/monday-fox.pug
+  table
+    thead: tr: td
+      .fox
+    tbody
+      for movie in mondayFox
+        +movie-card(movie)
+  include ./data/monday-usa.pug
+  table
+    thead: tr: td
+      .usa
+    tbody
+      for movie in mondayUSA
+        +movie-card(movie)
+  include ./data/monday-abc.pug
+  table
+    thead: tr: td
+      .abc
+    tbody
+      for movie in mondayABC
+        +movie-card(movie)
+  include ./data/monday-hbo.pug
+  table
+    thead: tr: td
+      .hbo
+    tbody
+      for movie in mondayHBO
+        +movie-card(movie)
+  include ./data/monday-tnt.pug
+  table
+    thead: tr: td
+      .tnt
+    tbody
+      for movie in mondayTNT
+        +movie-card(movie)

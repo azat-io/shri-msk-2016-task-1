@@ -1,0 +1,8 @@
+mixin movie-card(movie)
+  tr
+    td(class=movie.genre)
+      i= movie.time
+      p= movie.title
+      span
+        img(src='images/' + movie.image alt=movie.title)
+        p= movie.info
