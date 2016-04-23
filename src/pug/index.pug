@@ -3,3 +3,15 @@ html(lang='en')
   include ./head.pug
   body
     include ./header.pug
+    main
+      #tabs
+        mixin tab(name, id, checked)
+          input(type='radio' name='tabs' id=id checked=checked)
+          label(for=id)= name
+        +tab('Monday', 'toggle-monday', true)
+        +tab('Tuesday', 'toggle-tuesday', false)
+        +tab('Wednesday', 'toggle-wednesday', false)
+        +tab('Thursday', 'toggle-thursday', false)
+        +tab('Friday', 'toggle-friday', false)
+        +tab('Saturday', 'toggle-saturday', false)
+        +tab('Sunday', 'toggle-sunday', false)

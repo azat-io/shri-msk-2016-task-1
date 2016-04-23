@@ -299,3 +299,130 @@ header {
   margin: 20px auto;
   background-inline-image: url(src/inline-images/logo.png);
 }
+
+/* 3.0 Main
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+main {
+  display: block;
+  margin: 40px auto;
+  background-size: 100%;
+  background-repeat: repeat-y;
+  @media (width >= 990px) {
+    width: 970px;
+  }
+  @media (width >= 1200px) {
+    width: 1200px;
+  }
+}
+
+/* 3.1 Tabs
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+a[role="tab"][aria-selected="false"] {
+  background: #1928cf;
+  color: #fff;
+}
+
+#tabs {
+  width:100%;
+  margin:0 auto;
+  margin-top:2%;
+  margin-bottom:0;
+  border-radius:3px;
+}
+
+input[type="radio"] {
+  display:none;
+}
+
+label {
+  background: var(--mainColor);
+  display:inline-block;
+  margin-right: 2px;
+  border-radius: 3px;
+  padding: 14px 20px;
+  font-size: 95%;
+  font-weight: 700;
+  color: #e;
+  cursor:pointer;
+  transition:background .3s;
+  user-select: none;
+  transform: translateZ(0);
+  position: relative;
+  overflow: hidden;
+  background: var(--mainColor);
+  transition-property: color;
+  transition-duration: 0.3s;
+  @media (width <= 747px) {
+    font-size: 0;
+    padding: 14px;
+    &::first-letter {
+      font-size: 16px;
+    }
+  }
+}
+
+label:hover {
+  background: color(var(--mainColor) lightness(30%));
+  color: #f;
+}
+
+label:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #f;
+  border-radius: 100%;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  transition-property: transform;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-out;
+}
+
+label:active {
+  color: #35;
+}
+
+label:active:before {
+  -webkit-transform: scale(2);
+  transform: scale(2);
+}
+
+.tab {
+  min-height: 200px;
+  background: #f;
+  display: none;
+  padding: 12px;
+}
+
+#toggle-monday:checked ~ label[for="toggle-monday"],
+#toggle-tuesday:checked ~ label[for="toggle-tuesday"],
+#toggle-wednesday:checked ~ label[for="toggle-wednesday"],
+#toggle-thursday:checked ~ label[for="toggle-thursday"],
+#toggle-friday:checked ~ label[for="toggle-friday"],
+#toggle-saturday:checked ~ label[for="toggle-saturday"],
+#toggle-sunday:checked ~ label[for="toggle-sunday"] {
+  background: #f;
+  margin-bottom: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  padding-bottom: 18px;
+  color: #35;
+  cursor: default;
+}
+
+#toggle-monday:checked ~ #monday,
+#toggle-tuesday:checked ~ #tuesday,
+#toggle-wednesday:checked ~ #wednesday,
+#toggle-thursday:checked ~ #thursday,
+#toggle-friday:checked ~ #friday,
+#toggle-saturday:checked ~ #saturday,
+#toggle-sunday:checked ~ #sunday {
+  display:block;
+}
