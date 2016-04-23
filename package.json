@@ -27,8 +27,6 @@
     "postcss-cssnext": "2.5.2",
     "postcss-focus": "1.0.0",
     "postcss-inline-image": "0.1.1",
-    "postcss-inline-svg": "1.4.0",
-    "postcss-instagram": "1.0.0",
     "postcss-nested": "1.0.0",
     "postcss-pxtorem": "3.3.1",
     "postcss-size": "1.0.0",
