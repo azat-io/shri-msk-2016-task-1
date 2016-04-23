@@ -23,7 +23,7 @@
 }
 
 :root{
-  --mainColor: #42282E;
+  --mainColor: #42282e;
 }
 
 ::selection {
@@ -55,7 +55,8 @@ html {
 
 body {
   margin: 0 auto;
-  background: #D9CFB0;
+  background-inline-image: url(src/inline-images/bg-main.jpg);
+  background-repeat: repeat;
 }
 
 article,
