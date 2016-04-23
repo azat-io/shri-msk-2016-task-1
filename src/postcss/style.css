@@ -474,24 +474,26 @@ label:active:before {
 table tr td {
   position: relative;
 }
+
 table tr td span {
-  margin-left: -999em;
+  visibility: hidden;
   position: absolute;
+  display: none;
+  opacity: 0;
 }
 
 table tr td:hover span {
   position: absolute;
   left: 1em;
-  bottom: 16em;
+  visibility: visible;
+  padding: 10px;
+  background: #f;
+  display: block;
+  opacity: 1;
+  bottom: 2.5em;
   z-index: 99;
   margin-left: 0;
   width: 250px;
-}
-table tr td:hover img {
-  border: 0;
-  margin: -10px 0 0 -55px;
-  float: left;
-  position: absolute;
 }
 
 .fox, .abc, .usa, .hbo, .tnt {
