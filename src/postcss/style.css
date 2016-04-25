@@ -101,7 +101,7 @@ template,
 
 a {
   background-color: transparent;
-  /*color: inherit;*/
+  color: inherit;
   text-decoration: none;
 }
 
@@ -112,8 +112,7 @@ a:hover {
 
 abbr[title] {
   border-bottom: none;
-  text-decoration: underline;
-  text-decoration: underline dotted;
+  text-decoration: none;;
 }
 
 b,
@@ -362,6 +361,9 @@ label {
   background: var(--mainColor);
   transition-property: color;
   transition-duration: 0.3s;
+  abbr {
+    display: none;
+  }
   &:hover {
     background: color(var(--mainColor) lightness(30%));
     color: #f;
@@ -388,9 +390,18 @@ label {
     }
   }
   @media (width <= 747px) {
-    font-size: 0;
     padding: 14px;
-    &::first-letter {
+    font-size: 0;
+    abbr {
+      display: block;
+      font-size: 16px;
+    }
+  }
+  @media (width <= 420px) {
+    abbr {
+      font-size: 0;
+    }
+    abbr::first-letter {
       font-size: 16px;
     }
   }
@@ -491,8 +502,10 @@ table {
       span {
         visibility: hidden;
         position: absolute;
-        display: none;
+        bottom: 0;
+        height: auto;
         opacity: 0;
+        transition: visibility 0s, opacity 0.5s linear;
       }
       &:hover span {
         position: absolute;
@@ -500,7 +513,6 @@ table {
         visibility: visible;
         padding: 10px;
         background: #f;
-        display: block;
         opacity: 1;
         bottom: 2.5em;
         z-index: 99;

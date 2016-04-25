@@ -5,16 +5,17 @@ html(lang='en')
     include ./header.pug
     main
       #tabs
-        mixin tab(name, id, checked)
+        mixin tab(name, id, abbr, checked)
           input(type='radio' name='tabs' id=id checked=checked)
           label(for=id)= name
-        +tab('Monday', 'toggle-monday', true)
-        +tab('Tuesday', 'toggle-tuesday', false)
-        +tab('Wednesday', 'toggle-wednesday', false)
-        +tab('Thursday', 'toggle-thursday', false)
-        +tab('Friday', 'toggle-friday', false)
-        +tab('Saturday', 'toggle-saturday', false)
-        +tab('Sunday', 'toggle-sunday', false)
+            abbr= abbr
+        +tab('Monday', 'toggle-monday', 'Mon', true)
+        +tab('Tuesday', 'toggle-tuesday', 'Tue', false)
+        +tab('Wednesday', 'toggle-wednesday', 'Wed', false)
+        +tab('Thursday', 'toggle-thursday', 'Thu', false)
+        +tab('Friday', 'toggle-friday', 'Fri', false)
+        +tab('Saturday', 'toggle-saturday', 'Sat', false)
+        +tab('Sunday', 'toggle-sunday', 'Sun', false)
         #monday.tab
           include ./buttons.pug
           include ./movie-card.pug
