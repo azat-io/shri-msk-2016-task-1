@@ -1,0 +1,36 @@
+.channels
+  include ./data/sunday-fox.pug
+  table
+    thead: tr: td
+      .fox
+    tbody
+      for movie in sundayFox
+        +movie-card(movie)
+  include ./data/sunday-usa.pug
+  table
+    thead: tr: td
+      .usa
+    tbody
+      for movie in sundayUSA
+        +movie-card(movie)
+  include ./data/sunday-abc.pug
+  table
+    thead: tr: td
+      .abc
+    tbody
+      for movie in sundayABC
+        +movie-card(movie)
+  include ./data/sunday-hbo.pug
+  table
+    thead: tr: td
+      .hbo
+    tbody
+      for movie in sundayHBO
+        +movie-card(movie)
+  include ./data/sunday-tnt.pug
+  table
+    thead: tr: td
+      .tnt
+    tbody
+      for movie in sundayTNT
+        +movie-card(movie)

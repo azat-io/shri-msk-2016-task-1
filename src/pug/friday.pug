@@ -1,0 +1,36 @@
+.channels
+  include ./data/friday-fox.pug
+  table
+    thead: tr: td
+      .fox
+    tbody
+      for movie in fridayFox
+        +movie-card(movie)
+  include ./data/friday-usa.pug
+  table
+    thead: tr: td
+      .usa
+    tbody
+      for movie in fridayUSA
+        +movie-card(movie)
+  include ./data/friday-abc.pug
+  table
+    thead: tr: td
+      .abc
+    tbody
+      for movie in fridayABC
+        +movie-card(movie)
+  include ./data/friday-hbo.pug
+  table
+    thead: tr: td
+      .hbo
+    tbody
+      for movie in fridayHBO
+        +movie-card(movie)
+  include ./data/friday-tnt.pug
+  table
+    thead: tr: td
+      .tnt
+    tbody
+      for movie in fridayTNT
+        +movie-card(movie)
